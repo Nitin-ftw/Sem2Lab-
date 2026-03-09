@@ -1,73 +1,46 @@
 #include <stdio.h>
-
-int largest(int a, int b, int c);
-int smallest(int a, int b, int c);
-float average(int a, int b, int c, int *v);
-
+int a, b, c, V;
+void largest();
+void smallest();
+void average();
 int main()
 {
-    int m1, m2, m3;
-    int large, small, V;
-    float avg;
-
-    printf("Enter marks of three subjects: ");
-    scanf("%d %d %d", &m1, &m2, &m3);
-
-    large = largest(m1, m2, m3);
-    small = smallest(m1, m2, m3);
-    avg = average(m1, m2, m3, &V);
-
-    printf("Largest mark = %d\n", large);
-    printf("Smallest mark = %d\n", small);
-    printf("Average = %.2f\n", avg);
-    printf("Value of V = %d\n", V);
-
+    printf("Enter marks of three subjects out of 100: ");
+    scanf("%d%d%d", &a, &b, &c);
+    largest();
+    smallest();
+    average();
     return 0;
 }
-
-int largest(int a, int b, int c)
-{
-    int max;
-
-    if(a > b)
+void largest()
+{if (a > b )
     {
-        if(a > c)
-            max = a;
+        if (a >= c)
+            printf("Largest mark is: %d\n", a);
         else
-            max = c;
+            printf("Largest mark is: %d\n", c);
     }
     else
     {
-        if(b > c)
-            max = b;
+        if (b >= c)
+            printf("Largest mark is: %d\n", b);
         else
-            max = c;
+            printf("Largest mark is: %d\n", c);
     }
-
-    return max;
 }
-
-int smallest(int a, int b, int c)
-{
-    int min;
-
-    if(a < b && a < c)
-        min = a;
-    else if(b < a && b < c)
-        min = b;
+void smallest()
+{if (a <= b && a <= c)
+        printf("Smallest mark is: %d\n", a);
+    else if (b <= a && b <= c)
+        printf("Smallest mark is: %d\n", b);
     else
-        min = c;
-
-    return min;
+        printf("Smallest mark is: %d\n", c);
+    
 }
-
-float average(int a, int b, int c, int *v)
+void average()
 {
-    float avg;
-
-    avg = (a + b + c) / 3.0;
-
-    *v = (avg >= 50) ? 1 : 0;
-
-    return avg;
+    float avg = (a + b + c) / 3;
+    printf("Average mark is: %f\n", avg);
+    V = (avg >= 50) ? 1 : 0;
+    printf("Value of V: %d\n", V);
 }
