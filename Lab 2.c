@@ -1,46 +1,73 @@
 #include <stdio.h>
-int a, b, c, V;
-void largest();
-void smallest();
-void average();
+
+int largest(int , int , int );
+int smallest(int , int , int );
+float average(int , int , int , int *v);
+
 int main()
 {
-    printf("Enter marks of three subjects out of 100: ");
-    scanf("%d%d%d", &a, &b, &c);
-    largest();
-    smallest();
-    average();
+    int m1, m2, m3;
+    int large, small, V;
+    float avg;
+
+    printf("Enter marks of three subjects: ");
+    scanf("%d %d %d", &m1, &m2, &m3);
+
+    large = largest(m1, m2, m3);
+    small = smallest(m1, m2, m3);
+    avg = average(m1, m2, m3, &V);
+
+    printf("Largest mark = %d\n", large);
+    printf("Smallest mark = %d\n", small);
+    printf("Average = %.2f\n", avg);
+    printf("Value of V = %d\n", V);
+
     return 0;
 }
-void largest()
-{if (a > b )
-    {
-        if (a >= c)
-            printf("Largest mark is: %d\n", a);
-        else
-            printf("Largest mark is: %d\n", c);
-    }
-    else
-    {
-        if (b >= c)
-            printf("Largest mark is: %d\n", b);
-        else
-            printf("Largest mark is: %d\n", c);
-    }
-}
-void smallest()
-{if (a <= b && a <= c)
-        printf("Smallest mark is: %d\n", a);
-    else if (b <= a && b <= c)
-        printf("Smallest mark is: %d\n", b);
-    else
-        printf("Smallest mark is: %d\n", c);
-    
-}
-void average()
+
+int largest(int a, int b, int c)
 {
-    float avg = (a + b + c) / 3;
-    printf("Average mark is: %f\n", avg);
-    V = (avg >= 50) ? 1 : 0;
-    printf("Value of V: %d\n", V);
+    int max;
+
+    if(a > b)
+    {
+        if(a > c)
+            max = a;
+        else
+            max = c;
+    }
+    else
+    {
+        if(b > c)
+            max = b;
+        else
+            max = c;
+    }
+
+    return max;
+}
+
+int smallest(int a, int b, int c)
+{
+    int min;
+
+    if(a < b && a < c)
+        min = a;
+    else if(b < a && b < c)
+        min = b;
+    else
+        min = c;
+
+    return min;
+}
+
+float average(int a, int b, int c, int *v)
+{
+    float avg;
+
+    avg = (a + b + c) / 3.0;
+
+    *v = (avg >= 50) ? 1 : 0;
+
+    return avg;
 }
