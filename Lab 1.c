@@ -1,35 +1,47 @@
-#include<stdio.h> 
-#include<math.h> 
-#define pi 3.14 
-float X1,X2,Y1,Y2,D,R; 
-void radius(); 
-void area(); 
-void perimeter();
+#include <stdio.h>
+#include <math.h>
+
+#define PI 3.14159
+
+float diameter(float , float , float , float );
+float area(float );
+float perimeter(float );
+
 int main()
-{ 
-  printf("Enter the coordinates:"); 
-  scanf("%f %f %f %f",&X1,&Y1,&X2,&Y2);
-  radius(); 
-  area(); 
-  perimeter(); 
-  return 0;
-}
-void radius() 
-{ 
-  D=sqrt(pow(X2-X1,2)+pow(Y2-Y1,2)); 
-  R=D/2; 
-  printf("\nDiameter of circle is %f",D);  
-  printf("\nRadius of circle is %f",R); 
-  printf("\nRadius of circle after typecasting is %d",(int)R); 
-} 
-void area() 
-{  
-  float area=pi*pow(R,2); 
-  printf("\nArea of circle is %f",area); 
-}  
-  void perimeter() 
 {
-  int p; 
-  float perimeter=2*pi*R; 
-  printf("\nPerimeter of circle is %f",perimeter);   
+    float x1, y1, x2, y2, d, r, a, p;
+
+    printf("Enter x1 and y1: ");
+    scanf("%f %f", &x1, &y1);
+
+    printf("Enter x2 and y2: ");
+    scanf("%f %f", &x2, &y2);
+
+    d = diameter(x1, y1, x2, y2);
+
+    r = (float)d / 2;
+
+    a = area(r);
+    p = perimeter(r);
+
+    printf("\nDiameter = %.2f", d);
+    printf("\nArea = %.2f", a);
+    printf("\nPerimeter = %.2f", p);
+
+    return 0;
+}
+
+float diameter(float x1, float y1, float x2, float y2)
+{
+    return sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
+}
+
+float area(float r)
+{
+    return PI * r * r;
+}
+
+float perimeter(float r)
+{
+    return 2 * PI * r;
 }
